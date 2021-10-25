@@ -14,7 +14,24 @@
         Will be saving to ../data/synthetic_data.npy
         Size of each row is 501, first 500 is X, last dimention is y
 
-2. extr_feature.py
+
+2. sepr_train_test.py
+    Usage:
+        First parameter (path): path to data file:
+            e.g. ../data/synthetic_data.385_1.npy 
+        Second parameter (int): length of label:
+            e.g. 1
+        Third parameter (float): ratio of training set size:
+            e.g. 0.8
+
+        Example:
+            python3 sepr_train_test.py ../data/synthetic_data.385_1.npy 1 0.8
+
+    Result:
+        Will be saving to same path of input file
+
+
+3. extr_feature.py
     Usage:
         First parameter (path): path to data file:
             e.g. ../data/synthetic_data.npy 
@@ -32,22 +49,7 @@
             385 indicates 385 extracted features 
             1 indicates last dimension is label
 
-3. sepr_train_test.py
-    Usage:
-        First parameter (path): path to data file:
-            e.g. ../data/synthetic_data.385_1.npy 
-        Second parameter (int): length of label:
-            e.g. 1
-        Third parameter (float): ratio of training set size:
-            e.g. 0.8
-
-        Example:
-            python3 sepr_train_test.py ../data/synthetic_data.385_1.npy 1 0.8
-
-    Result:
-        Will be saving to same path of input file
-
-4. comp_generic_regressors.py
+4. algo_generic_regressors.py
     Usage:
         First parameter (path): path to data file:
             e.g. ../data/synthetic_data_train.385_1.npy 
@@ -57,9 +59,9 @@
             e.g. fit/predict/score
 
         Example:
-            python3 comp_generic_regressors.py ../data/synthetic_data.385_1.npy 1 fit
-            python3 comp_generic_regressors.py ../data/synthetic_data.385_1.npy 1 predict
-            python3 comp_generic_regressors.py ../data/synthetic_data.385_1.npy 1 score
+            python3 algo_generic_regressors.py ../data/synthetic_data.385_1.npy 1 fit
+            python3 algo_generic_regressors.py ../data/synthetic_data.385_1.npy 1 predict
+            python3 algo_generic_regressors.py ../data/synthetic_data.385_1.npy 1 score
 
     Result:
         Will be saving to same path of input file
