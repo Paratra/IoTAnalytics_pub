@@ -3,23 +3,11 @@
 # To add a new markdown cell, type '# %% [markdown]'
 
 import numpy as np
-import time
+import json
 import sys
-import re
-import pytz
-import time
-import math
-import subprocess
-import sys
-import random
-import webbrowser
+
 import numpy as np
-from datetime import datetime
-from dateutil import tz
-import random
-import pandas as pd
-# import numpy as np
-import matplotlib.pyplot as plt
+
 import seaborn as sns
 from sklearn import preprocessing
 from sklearn.feature_selection import VarianceThreshold
@@ -75,20 +63,25 @@ from generic_regressor import GenericRegressor
 
 
 if __name__ == '__main__':
-    if(len(sys.argv) < 3):
-        print(f"Usage: {sys.argv[0]} data_file number_of_labels fit/predict/score")
-        print(f"Example: {sys.argv[0]} ../data/synthetic_data.385_1.npy 1 fit")
-        print(f"Example: {sys.argv[0]} ../data/synthetic_data.385_1.npy 1 predict")
-        print(f"Example: {sys.argv[0]} ../data/synthetic_data.385_1.npy 1 score")
+    if(len(sys.argv) < 4):
+        print(f"Usage: {sys.argv[0]} data_file config_file number_of_labels fit/predict/score")
+        print(f"Example: {sys.argv[0]} ../data/synthetic_data.385_1.npy ../data/config.json 1 fit")
+        print(f"Example: {sys.argv[0]} ../data/synthetic_data.385_1.npy ../data/config.json 1 predict")
+        print(f"Example: {sys.argv[0]} ../data/synthetic_data.385_1.npy ../data/config.json 1 score")
         exit()
 
-
+    ### get arguments
     data_file = sys.argv[1]
-    num_labels = int(sys.argv[2])
-    run_mode = sys.argv[3]
+    config_file = sys.argv[2]
+    num_labels = int(sys.argv[3])
+    run_mode = sys.argv[4]
 
+    ### load data and config
+    data_set = np.load(data_file)
+    config = json.load(open(config_file, 'r'))
 
-    data_set = np.load(sys.argv[1])
+    st()
+
 
     X = data_set[:,:-num_labels]
     Y = data_set[:,-num_labels:]
